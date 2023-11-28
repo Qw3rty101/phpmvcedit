@@ -5,8 +5,8 @@
             <div class="d-inline-flex p-2">
                 <?php $firstPkl = $data['pkl'][0]; ?>
                 <?php if (isset($firstPkl['id_info'])) : ?>
-                    <button type="button" onclick="downloadData()" class="btn btn-secondary" id="downloadButton">
-                        Download Data PKL
+                    <button type="button" onclick="lihatData()" class="btn btn-warning" id="downloadButton">
+                        Lihat Data
                     </button>
                 <?php endif; ?>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -109,13 +109,11 @@
             xhr.send();
         }
     }
-    function downloadData() {
-        let konfirmasi = confirm('Download Semua Data?');
 
-        if (konfirmasi) {
+    function lihatData() {
 
             let xhr = new XMLHttpRequest();
-            let url = "<?=BASEURL;?>/pkl/download/";
+            let url = "<?=BASEURL;?>/pkl/data/";
             
             xhr.open("POST", url, true);
             xhr.onload = function () {
@@ -124,14 +122,13 @@
 
                     console.log(xhr.responseText);
 
-                    window.location.href = "<?=BASEURL;?>/pkl/download";
+                    window.location.href = "<?=BASEURL;?>/pkl/data";
                 } else {
                     console.error("Error:", xhr.statusText);
                 }
             };
 
             xhr.send();
-        }
     }
     
 

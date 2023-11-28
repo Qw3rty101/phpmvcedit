@@ -39,6 +39,19 @@ class Pkl extends Controller {
         $this->view('pkl/download', $data);
     }
 
+    public function data()
+    {
+        // session_start();
+        
+        if (!isset($_SESSION['email'])) {
+            header('Location:' . BASEURL . '/pkl'); 
+            exit();
+        }
+        $data['judul'] = 'Pelatihan Kerja Lapangan';
+        $data['pkl'] = $this->model('Pkl_model')->downloadPkl();
+        $this->view('pkl/data', $data);
+    }
+
     public function daftar($id)
     {
         if( $this->model('Pkl_model')->daftar($id) > 0 ) {
