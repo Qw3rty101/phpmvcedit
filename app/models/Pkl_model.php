@@ -87,13 +87,14 @@ class pkl_model {
 
     public function countPendaftar($id)
     {
-        $query = "SELECT COUNT(*) FROM `tbl_pkl_daftar` WHERE id_info = :id_info";
+        $query = "SELECT COUNT(*) as total FROM `tbl_pkl_daftar` WHERE id_info = :id_info";
         $this->db->query($query);
         $this->db->bind('id_info', $id);
         $this->db->execute();
-
-        return $this->db->singleColumn();
+    
+        return $this->db->single()['total'];
     }
+    
 
     public function daftar($id)
     {

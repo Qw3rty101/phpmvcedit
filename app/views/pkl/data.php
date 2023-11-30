@@ -166,7 +166,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["name_siswa"] . "</td>";
                         echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["noWA_siswa"] . "</td>";
                         echo "<td style='padding-right:10px;padding-left:10px;'>
-                                <a href='" . BASEURL . "/announcements/hapus/' class='btn btn-danger btn-circle'>
+                                <a href='" . BASEURL . "/pkl/data/hapus" . $pklData['id_daftar'] . "' class='btn btn-danger btn-circle'>
                                 <i class='fas fa-trash'></i>
                                 </a>
                             </td>";

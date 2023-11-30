@@ -20,6 +20,9 @@ class Pkl extends Controller {
             // Handle jika tidak ada data pkl atau id_info tidak ditemukan
             $data['jumlahPendaftar'] = 0;
         }
+        foreach ($data['pkl'] as &$pkl) {
+            $pkl['jumlahPendaftar'] = $this->model('Pkl_model')->countPendaftar($pkl['id_info']);
+        }
         
         $this->view('templates/header', $data);
         $this->view('pkl/index', $data);

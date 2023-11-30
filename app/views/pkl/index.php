@@ -1,25 +1,26 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Pelatihan Kerja Lapangan</h1>
-        <?php if (isset($_SESSION['email']) && !empty($data['pkl'])) : ?>
-            <div class="d-inline-flex p-2">
+        <div class="d-inline-flex p-2">
+            <?php if (isset($_SESSION['email'])) :?>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Tambah Info PKL
+                </button>
+            <?php endif;?>
+            <?php if (isset($_SESSION['email']) && !empty($data['pkl'])) : ?>
                 <?php $firstPkl = $data['pkl'][0]; ?>
                 <?php if (isset($firstPkl['id_info'])) : ?>
                     <button type="button" onclick="lihatData()" class="btn btn-warning" id="downloadButton">
                         Lihat Data
                     </button>
                 <?php endif; ?>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Tambah Info PKL
-                </button>
-            </div>
         <?php endif; ?>
-
+        </div>
     </div>
 
 
 
-    <div class="list-group mt-4">
+<div class="list-group mt-4">
     <?php foreach ($data['pkl'] as $pkl) : ?>
         <div>
             <a href="<?php if(isset($_SESSION['siswa'])) {
@@ -34,7 +35,7 @@
                     <?php endif; ?>
                 </div>
                 <p class="mb-1"><?= $pkl['deks_info']; ?></p>
-                <?php if ($data['jumlahPendaftar'] < $pkl['jml_pendaftar']) : ?>
+                <?php if ($pkl['jumlahPendaftar'] < $pkl['jml_pendaftar']) : ?>
                     <span class="badge badge-success">Tersedia</span>
                 <?php else: ?>
                     <span class="badge badge-danger">Tidak Tersedia</span>
@@ -42,7 +43,8 @@
             </a>
         </div>
     <?php endforeach; ?>
-    </div>
+</div>
+
 
 
     <!-- Modal -->
