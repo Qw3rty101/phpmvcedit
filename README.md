@@ -1,1 +1,1 @@
-# phpmvcedit
+# Informasi Akademik SMK
