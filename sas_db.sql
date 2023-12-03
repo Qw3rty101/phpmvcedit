@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Nov 2023 pada 00.09
+-- Waktu pembuatan: 03 Des 2023 pada 17.58
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -38,11 +38,8 @@ CREATE TABLE `tbl_pkl_daftar` (
 --
 
 INSERT INTO `tbl_pkl_daftar` (`id_daftar`, `id_info`, `id_siswa`) VALUES
-(2, 3, 1),
-(3, 3, 2),
-(4, 6, 3),
-(5, 6, 2),
-(6, 3, 3);
+(52, 7, 1),
+(53, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -79,6 +76,13 @@ CREATE TABLE `tbl_sas_announcements` (
   `created_by` int(11) NOT NULL,
   `id_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tbl_sas_announcements`
+--
+
+INSERT INTO `tbl_sas_announcements` (`id_ann`, `title_ann`, `content_ann`, `created_at`, `created_by`, `id_admin`) VALUES
+(4, 'Wleowleowleo', 'asd', '2023-12-03 15:56:09', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -121,8 +125,9 @@ CREATE TABLE `tbl_sas_pkl` (
 --
 
 INSERT INTO `tbl_sas_pkl` (`id_info`, `id_admin`, `title_info`, `deks_info`, `jml_pendaftar`, `created_by`, `created_at`) VALUES
-(3, 1, 'PT. Bridgestone Indonesia', 'Operator Produksi', 2, 1, '2023-11-26 19:48:02'),
-(6, 1, 'PT. Mencari Cinta Sejati', 'Sales', 3, 1, '2023-11-26 22:51:21');
+(7, 1, 'test', 'test', 1, 1, '2023-12-02 09:11:05'),
+(8, 1, 'PT. Bridgestone Indonesia', 'Operator Produksi', 2, 1, '2023-12-03 14:26:49'),
+(10, 1, 'PT. Mencari Cinta Sejati', 'sales', 2, 1, '2023-12-03 14:27:30');
 
 -- --------------------------------------------------------
 
@@ -152,9 +157,25 @@ CREATE TABLE `tbl_sas_siswa` (
 --
 
 INSERT INTO `tbl_sas_siswa` (`id_siswa`, `name_siswa`, `nisn_siswa`, `address_siswa`, `noWA_siswa`, `id_jurusan`, `rombel_siswa`, `jurusan_siswa`, `foto_siswa`, `status_siswa_active`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 'Siraj Nurul Bil Haq', '1234567890', 'wrb', '081281270880', 1, 'XII RPL 2', 'RPL', 0x363536336131313533383431612e6a7067, 1, '2023-11-26 19:21:54', '2023-11-26 19:48:54', NULL, 1),
+(1, 'Siraj Nurul Bil Haq', '1234567890', 'Warungbambu', '081281270880', 1, 'XII RPL 2', 'RPL', 0x363536633934653061363061322e6a7067, 1, '2023-11-26 19:21:54', '2023-12-03 15:23:54', NULL, 1),
 (2, 'Alvin', '9090909090', 'subang', '1234567890', 2, 'XII TKJ 2', 'TKJ', '', 1, '2023-11-26 19:51:22', '2023-11-26 19:51:22', NULL, NULL),
-(3, 'Fawaz', '2222233333', 'Perumnas', '8989898989', 2, 'XII TKJ 2', 'TKJ', '', 1, '2023-11-26 19:52:35', '2023-11-26 19:52:35', NULL, NULL);
+(3, 'Fawaz', '2222233333', 'Perumnas', '8989898989', 2, 'XII TKJ 2', 'TKJ', 0x363536633932653334346164632e706e67, 1, '2023-11-26 19:52:35', '2023-12-03 14:38:27', NULL, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_sas_skills`
+--
+
+CREATE TABLE `tbl_sas_skills` (
+  `id_skill` int(11) NOT NULL,
+  `id_admin` int(11) NOT NULL,
+  `title_skill` varchar(50) NOT NULL,
+  `deks_skill` varchar(255) NOT NULL,
+  `link_skill` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -202,6 +223,12 @@ ALTER TABLE `tbl_sas_siswa`
   ADD KEY `id_jurusan` (`id_jurusan`);
 
 --
+-- Indeks untuk tabel `tbl_sas_skills`
+--
+ALTER TABLE `tbl_sas_skills`
+  ADD PRIMARY KEY (`id_skill`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -209,7 +236,7 @@ ALTER TABLE `tbl_sas_siswa`
 -- AUTO_INCREMENT untuk tabel `tbl_pkl_daftar`
 --
 ALTER TABLE `tbl_pkl_daftar`
-  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_sas_admin`
@@ -221,7 +248,7 @@ ALTER TABLE `tbl_sas_admin`
 -- AUTO_INCREMENT untuk tabel `tbl_sas_announcements`
 --
 ALTER TABLE `tbl_sas_announcements`
-  MODIFY `id_ann` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_ann` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_sas_jurusan`
@@ -233,13 +260,19 @@ ALTER TABLE `tbl_sas_jurusan`
 -- AUTO_INCREMENT untuk tabel `tbl_sas_pkl`
 --
 ALTER TABLE `tbl_sas_pkl`
-  MODIFY `id_info` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_info` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_sas_siswa`
 --
 ALTER TABLE `tbl_sas_siswa`
   MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_sas_skills`
+--
+ALTER TABLE `tbl_sas_skills`
+  MODIFY `id_skill` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
