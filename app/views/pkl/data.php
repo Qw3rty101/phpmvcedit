@@ -136,7 +136,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <?php $firstPkl = $data['pkl'][0]; ?>
+                <!-- <?php $firstPkl = $data['pkl'][0]; ?> -->
                 <?php if (isset($firstPkl['id_info'])) : ?>
                     <button type="button" onclick="downloadData()" class="btn btn-success" id="downloadButton">
                         Download Data PKL
@@ -147,6 +147,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             <th>Tempat PKL</th>
                             <th>Nama</th>
                             <th>No WhatsApp</th>
+                            <th>Kelas</th>
                             <th>Opsi</th>
                         </tr>
                     </thead>
@@ -155,6 +156,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             <th>Tempat PKL</th>
                             <th>Nama</th>
                             <th>No WhatsApp</th>
+                            <th>Kelas</th>
                             <th>Opsi</th>
                         </tr>
                     </tfoot>
@@ -165,6 +167,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["title_info"] . "</td>";
                         echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["name_siswa"] . "</td>";
                         echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["noWA_siswa"] . "</td>";
+                        echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["rombel_siswa"] . "</td>";
                         echo "<td style='padding-right:10px;padding-left:10px;'>
                                 <a href='" . BASEURL . "/pkl/data/hapus" . $pklData['id_daftar'] . "' class='btn btn-danger btn-circle'>
                                 <i class='fas fa-trash'></i>

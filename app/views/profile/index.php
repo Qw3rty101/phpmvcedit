@@ -1,10 +1,10 @@
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Profile</h1>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-lg-6">
             <?php Flasher::flash(); ?>
         </div>
-    </div>
+    </div> -->
 <div class="row">
 <!-- Area Chart -->
 <div class="col-xl-4 col-lg-7">

@@ -109,6 +109,7 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['siswa'])) {
                 echo '            <a class="collapse-item" href="tableData">Table Data</a>';
                 echo '            <a class="collapse-item" href="Pkl">PKL</a>';
                 echo '            <a class="collapse-item" href="Pelatihan">Workshop / Bootcamp</a>';
+                echo '            <a class="collapse-item" href="TambahSiswa">Tambah Siswa</a>';
                 echo '        </div>';
                 echo '    </div>';
                 echo '</li>';

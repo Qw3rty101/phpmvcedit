@@ -146,6 +146,7 @@ class pkl_model {
         pkl_daftar.id_siswa,
         pkl.title_info,
         siswa.name_siswa,
+        siswa.rombel_siswa,
         siswa.noWA_siswa
         FROM
             tbl_pkl_daftar AS pkl_daftar
