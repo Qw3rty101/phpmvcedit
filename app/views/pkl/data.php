@@ -169,10 +169,10 @@ if (session_status() == PHP_SESSION_NONE) {
                         echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["noWA_siswa"] . "</td>";
                         echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["rombel_siswa"] . "</td>";
                         echo "<td style='padding-right:10px;padding-left:10px;'>
-                                <a href='" . BASEURL . "/pkl/data/hapus" . $pklData['id_daftar'] . "' class='btn btn-danger btn-circle'>
+                            <button class='btn btn-danger btn-circle' onclick='hapusSiswa(" . $pklData['id_daftar'] . ")'>
                                 <i class='fas fa-trash'></i>
-                                </a>
-                            </td>";
+                            </button>
+                        </td>";
                         echo "</tr>";
                     }
                     ?>
@@ -231,29 +231,50 @@ if (session_status() == PHP_SESSION_NONE) {
 
     <script>
             function downloadData() {
-        let konfirmasi = confirm('Download Semua Data?');
+                let konfirmasi = confirm('Download Semua Data?');
 
-        if (konfirmasi) {
+                if (konfirmasi) {
 
-            let xhr = new XMLHttpRequest();
-            let url = "<?=BASEURL;?>/pkl/download/";
-            
-            xhr.open("POST", url, true);
-            xhr.onload = function () {
+                    let xhr = new XMLHttpRequest();
+                    let url = "<?=BASEURL;?>/pkl/download/";
+                    
+                    xhr.open("POST", url, true);
+                    xhr.onload = function () {
 
-                if (xhr.status == 200) {
+                        if (xhr.status == 200) {
 
-                    console.log(xhr.responseText);
+                            console.log(xhr.responseText);
 
-                    window.location.href = "<?=BASEURL;?>/pkl/download";
-                } else {
-                    console.error("Error:", xhr.statusText);
+                            window.location.href = "<?=BASEURL;?>/pkl/download";
+                        } else {
+                            console.error("Error:", xhr.statusText);
+                        }
+                    };
+
+                    xhr.send();
                 }
-            };
+            }
 
-            xhr.send();
+            function hapusSiswa(idInfo) {
+            let konfirmasi = confirm('Anda akan menghapus pendaftaran siswa ini!');
+
+            if (konfirmasi) {
+                let xhr = new XMLHttpRequest();
+                let url = "<?=BASEURL;?>/pkl/hapusSiswa/" + idInfo;
+
+                xhr.open("POST", url, true);
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        console.log(xhr.responseText);
+                        window.location.href = "<?=BASEURL;?>/pkl/data";
+                    } else {
+                        console.error("Error:", xhr.statusText);
+                    }
+                };
+
+                xhr.send();
+            }
         }
-    }
     </script>
 
     <!-- Bootstrap core JavaScript-->

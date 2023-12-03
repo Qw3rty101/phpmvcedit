@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Des 2023 pada 19.03
+-- Waktu pembuatan: 03 Des 2023 pada 19.26
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -124,7 +124,7 @@ CREATE TABLE `tbl_sas_pkl` (
 --
 
 INSERT INTO `tbl_sas_pkl` (`id_info`, `id_admin`, `title_info`, `deks_info`, `jml_pendaftar`, `created_by`, `created_at`) VALUES
-(30, 1, 'PT. Mencari Cinta Sejati', 'Model', 4, 1, '2023-12-03 17:13:49'),
+(30, 1, 'PT. Mencari Cinta Sejati', 'Model', 2, 1, '2023-12-03 17:13:49'),
 (32, 1, 'PT. Apaajalah', 'ya nda tau', 2, 1, '2023-12-03 18:02:43');
 
 -- --------------------------------------------------------
@@ -244,7 +244,7 @@ ALTER TABLE `tbl_sas_skills`
 -- AUTO_INCREMENT untuk tabel `tbl_pkl_daftar`
 --
 ALTER TABLE `tbl_pkl_daftar`
-  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_sas_admin`

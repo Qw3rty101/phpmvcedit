@@ -98,4 +98,17 @@ class Pkl extends Controller {
         }
     }
 
+    public function hapusSiswa($id)
+    {
+        if( $this->model('Pkl_model')->delSis($id) > 0 ) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/pkl/data');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/pkl/data');
+            exit;
+        }
+    }
+
 }

@@ -136,6 +136,18 @@ class pkl_model {
             return false;
         }
     }
+
+    public function delSis($id) 
+    {
+        $query = "DELETE FROM tbl_pkl_daftar WHERE id_daftar = $id";
+        
+        $this->db->query($query);
+        // $this->db->bind('id_ann', $id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
     
     
     public function downloadPkl()
