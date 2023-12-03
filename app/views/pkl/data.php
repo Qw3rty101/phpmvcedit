@@ -83,6 +83,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 echo '            <a class="collapse-item" href="../tableData">Table Data</a>';
                 echo '            <a class="collapse-item" href="../Pkl">PKL</a>';
                 echo '            <a class="collapse-item" href="../Pelatihan">Workshop / Bootcamp</a>';
+                echo '            <a class="collapse-item" href="TambahSiswa">Tambah Siswa</a>';
                 echo '        </div>';
                 echo '    </div>';
                 echo '</li>';
@@ -124,66 +125,66 @@ if (session_status() == PHP_SESSION_NONE) {
                 </nav>
                 <!-- End of Topbar -->
                 <div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Siswa</h1>
-    </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Data Siswa</h1>
+                    </div>
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Table Siswa</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <!-- <?php $firstPkl = $data['pkl'][0]; ?> -->
-                <?php if (isset($firstPkl['id_info'])) : ?>
-                    <button type="button" onclick="downloadData()" class="btn btn-success" id="downloadButton">
-                        Download Data PKL
-                    </button>
-                <?php endif; ?>
-                    <thead>
-                        <tr>
-                            <th>Tempat PKL</th>
-                            <th>Nama</th>
-                            <th>No WhatsApp</th>
-                            <th>Kelas</th>
-                            <th>Opsi</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Tempat PKL</th>
-                            <th>Nama</th>
-                            <th>No WhatsApp</th>
-                            <th>Kelas</th>
-                            <th>Opsi</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                    <?php
-                    foreach ($data['pkl'] as $pklData) {
-                        echo "<tr>";
-                        echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["title_info"] . "</td>";
-                        echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["name_siswa"] . "</td>";
-                        echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["noWA_siswa"] . "</td>";
-                        echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["rombel_siswa"] . "</td>";
-                        echo "<td style='padding-right:10px;padding-left:10px;'>
-                            <button class='btn btn-danger btn-circle' onclick='hapusSiswa(" . $pklData['id_daftar'] . ")'>
-                                <i class='fas fa-trash'></i>
-                            </button>
-                        </td>";
-                        echo "</tr>";
-                    }
-                    ?>
-                    </tbody>
-                </table>
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Table Siswa</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <!-- <?php $firstPkl = $data['pkl'][0]; ?> -->
+                                <?php if (isset($firstPkl['id_info'])) : ?>
+                                    <button type="button" onclick="downloadData()" class="btn btn-success" id="downloadButton">
+                                        Download Data PKL
+                                    </button>
+                                <?php endif; ?>
+                                    <thead>
+                                        <tr>
+                                            <th>Tempat PKL</th>
+                                            <th>Nama</th>
+                                            <th>No WhatsApp</th>
+                                            <th>Kelas</th>
+                                            <th>Opsi</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Tempat PKL</th>
+                                            <th>Nama</th>
+                                            <th>No WhatsApp</th>
+                                            <th>Kelas</th>
+                                            <th>Opsi</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <?php
+                                    foreach ($data['pkl'] as $pklData) {
+                                        echo "<tr>";
+                                        echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["title_info"] . "</td>";
+                                        echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["name_siswa"] . "</td>";
+                                        echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["noWA_siswa"] . "</td>";
+                                        echo "<td style='padding-right:10px;padding-left:10px;'>" . $pklData["rombel_siswa"] . "</td>";
+                                        echo "<td style='padding-right:10px;padding-left:10px;'>
+                                            <button class='btn btn-danger btn-circle' onclick='hapusSiswa(" . $pklData['id_daftar'] . ")'>
+                                                <i class='fas fa-trash'></i>
+                                            </button>
+                                        </td>";
+                                        echo "</tr>";
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </div>
-</div>
-
-</div>
             <!-- End of Main Content -->
 
             <!-- Footer -->

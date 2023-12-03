@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Des 2023 pada 19.26
+-- Waktu pembuatan: 03 Des 2023 pada 19.35
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -38,7 +38,8 @@ CREATE TABLE `tbl_pkl_daftar` (
 --
 
 INSERT INTO `tbl_pkl_daftar` (`id_daftar`, `id_info`, `id_siswa`) VALUES
-(61, 30, 1);
+(61, 30, 1),
+(64, 30, 3);
 
 -- --------------------------------------------------------
 
@@ -244,7 +245,7 @@ ALTER TABLE `tbl_sas_skills`
 -- AUTO_INCREMENT untuk tabel `tbl_pkl_daftar`
 --
 ALTER TABLE `tbl_pkl_daftar`
-  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_sas_admin`
