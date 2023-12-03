@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Des 2023 pada 17.58
+-- Waktu pembuatan: 03 Des 2023 pada 19.03
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -38,8 +38,7 @@ CREATE TABLE `tbl_pkl_daftar` (
 --
 
 INSERT INTO `tbl_pkl_daftar` (`id_daftar`, `id_info`, `id_siswa`) VALUES
-(52, 7, 1),
-(53, 8, 2);
+(61, 30, 1);
 
 -- --------------------------------------------------------
 
@@ -125,9 +124,8 @@ CREATE TABLE `tbl_sas_pkl` (
 --
 
 INSERT INTO `tbl_sas_pkl` (`id_info`, `id_admin`, `title_info`, `deks_info`, `jml_pendaftar`, `created_by`, `created_at`) VALUES
-(7, 1, 'test', 'test', 1, 1, '2023-12-02 09:11:05'),
-(8, 1, 'PT. Bridgestone Indonesia', 'Operator Produksi', 2, 1, '2023-12-03 14:26:49'),
-(10, 1, 'PT. Mencari Cinta Sejati', 'sales', 2, 1, '2023-12-03 14:27:30');
+(30, 1, 'PT. Mencari Cinta Sejati', 'Model', 4, 1, '2023-12-03 17:13:49'),
+(32, 1, 'PT. Apaajalah', 'ya nda tau', 2, 1, '2023-12-03 18:02:43');
 
 -- --------------------------------------------------------
 
@@ -178,6 +176,15 @@ CREATE TABLE `tbl_sas_skills` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data untuk tabel `tbl_sas_skills`
+--
+
+INSERT INTO `tbl_sas_skills` (`id_skill`, `id_admin`, `title_skill`, `deks_skill`, `link_skill`, `created_at`, `created_by`) VALUES
+(6, 1, 'Build With Angga', 'Kelas Online Belajar Design dan Development | BuildWithAngga', 'https://buildwithangga.com/', '2023-12-03 17:59:03', 1),
+(12, 1, 'Dicoding Indonesia', 'Bangun Karirmu Sebagai Developer Profesional', 'https://www.dicoding.com/', '2023-12-03 18:00:52', 1),
+(13, 1, 'StudyClubProgramming(SR)', 'Komunitas Belajar Programming (UBP)', 'https://discord.gg/Qp7rUf7MdG', '2023-12-03 18:01:59', 1);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -226,7 +233,8 @@ ALTER TABLE `tbl_sas_siswa`
 -- Indeks untuk tabel `tbl_sas_skills`
 --
 ALTER TABLE `tbl_sas_skills`
-  ADD PRIMARY KEY (`id_skill`);
+  ADD PRIMARY KEY (`id_skill`),
+  ADD KEY `id_admin` (`id_admin`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -236,7 +244,7 @@ ALTER TABLE `tbl_sas_skills`
 -- AUTO_INCREMENT untuk tabel `tbl_pkl_daftar`
 --
 ALTER TABLE `tbl_pkl_daftar`
-  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_sas_admin`
@@ -260,7 +268,7 @@ ALTER TABLE `tbl_sas_jurusan`
 -- AUTO_INCREMENT untuk tabel `tbl_sas_pkl`
 --
 ALTER TABLE `tbl_sas_pkl`
-  MODIFY `id_info` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_info` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_sas_siswa`
@@ -272,7 +280,7 @@ ALTER TABLE `tbl_sas_siswa`
 -- AUTO_INCREMENT untuk tabel `tbl_sas_skills`
 --
 ALTER TABLE `tbl_sas_skills`
-  MODIFY `id_skill` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_skill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -302,6 +310,12 @@ ALTER TABLE `tbl_sas_pkl`
 --
 ALTER TABLE `tbl_sas_siswa`
   ADD CONSTRAINT `tbl_sas_siswa_ibfk_1` FOREIGN KEY (`id_jurusan`) REFERENCES `tbl_sas_jurusan` (`id_jurusan`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `tbl_sas_skills`
+--
+ALTER TABLE `tbl_sas_skills`
+  ADD CONSTRAINT `tbl_sas_skills_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `tbl_sas_admin` (`id_admin`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

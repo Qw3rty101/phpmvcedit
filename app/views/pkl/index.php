@@ -98,26 +98,27 @@
 
 
 <script>
-function hapusData(idInfo) {
-            let konfirmasi = confirm('Anda akan sekaligus menghapus data pendaftaran!');
+    function hapusData(idInfo) {
+        let konfirmasi = confirm('Anda akan sekaligus menghapus data pendaftaran!');
 
-            if (konfirmasi) {
-                let xhr = new XMLHttpRequest();
-                let url = "<?=BASEURL;?>/pkl/hapus/" + idInfo;
+        if (konfirmasi) {
+            let xhr = new XMLHttpRequest();
+            let url = "<?=BASEURL;?>/pkl/hapus/" + idInfo;
 
-                xhr.open("POST", url, true);
-                xhr.onload = function () {
-                    if (xhr.status == 200) {
-                        console.log(xhr.responseText);
-                        window.location.href = "<?=BASEURL;?>/pkl";
-                    } else {
-                        console.error("Error:", xhr.statusText);
-                    }
-                };
+            xhr.open("POST", url, true);
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    console.log(xhr.responseText);
+                    window.location.href = "<?=BASEURL;?>/pkl";
+                } else {
+                    console.error("Error:", xhr.statusText);
+                }
+            };
 
-                xhr.send();
-            }
+            xhr.send();
         }
+    }
+    
     function lihatData() {
 
             let xhr = new XMLHttpRequest();

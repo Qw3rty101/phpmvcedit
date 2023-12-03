@@ -23,7 +23,7 @@
             </button>
         </div>
         <div class="modal-body">
-        <form action="<?=BASEURL;?>/announcements/tambah" method="POST">
+        <form action="<?=BASEURL;?>/Pelatihan/tambah" method="POST">
             <div class="form-group">
                 <label for="title">Judul</label>
                 <input type="text" class="form-control"name="title" id="title" aria-describedby="">
@@ -48,28 +48,48 @@
 
     
     <div class="row">
-    <?php for ($i = 0; $i < 4; $i++) : ?>
-        <div class="col-xl-4 col-md-6 mb-4" style="margin-left: -3px;">
-            <div class="p-3">
-                <div class="card mx-auto" style="width: 18rem;">
-                    <div class="card-body">
-                        <?php if (isset($_SESSION['email'])) : ?>
-                            <button type="button" class="close text-danger" aria-label="Close" id="hapusButton_<?= $pkl['id_info']; ?>" onclick="hapusData('<?= $pkl['id_info']; ?>')">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        <?php endif; ?>
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-info">Go somewhere</a>
+        <?php foreach ($data['skill'] as $skl) : ?>
+            <div class="col-xl-4 col-md-6 mb-4" style="margin-left: -3px;">
+                <div class="p-3">
+                    <div class="card mx-auto" style="width: 18rem;">
+                        <div class="card-body">
+                            <?php if (isset($_SESSION['email'])) : ?>
+                                <button type="button" class="close text-danger" aria-label="Close" id="hapusButton_<?= $skl['id_skill']; ?>" onclick="hapusData('<?= $skl['id_skill']; ?>')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            <?php endif; ?>
+                            <h5 class="card-title"><?= $skl['title_skill'] ?></h5>
+                            <p class="card-text"><?= $skl['deks_skill'] ?></p>
+                            <a href="<?= $skl['link_skill'] ?>" target="_blank" class="btn btn-info">Mendaftar</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    <?php endfor; ?>
-</div>
-
-
-
+        <?php endforeach; ?>
+    </div>
 
 </div>
+
+<script>
+    function hapusData(idSkill) {
+        let konfirmasi = confirm('Anda akan menghapus informasi!');
+
+        if (konfirmasi) {
+            let xhr = new XMLHttpRequest();
+            let url = "<?=BASEURL;?>/pelatihan/hapus/" + idSkill;
+
+            xhr.open("POST", url, true);
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    console.log(xhr.responseText);
+                    window.location.href = "<?=BASEURL;?>/pelatihan";
+                } else {
+                    console.error("Error:", xhr.statusText);
+                }
+            };
+
+            xhr.send();
+        }
+    }
+</script>
 
