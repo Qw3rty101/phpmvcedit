@@ -138,7 +138,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <?php $firstPkl = $data['pkl'][0]; ?>
                 <?php if (isset($firstPkl['id_info'])) : ?>
-                    <button type="button" onclick="downloadData()" class="btn btn-secondary" id="downloadButton">
+                    <button type="button" onclick="downloadData()" class="btn btn-success" id="downloadButton">
                         Download Data PKL
                     </button>
                 <?php endif; ?>

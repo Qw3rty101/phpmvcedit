@@ -98,25 +98,45 @@ class pkl_model {
 
     public function daftar($id)
     {
+    
         // Check if id_siswa already exists
-        $checkQuery = "SELECT COUNT(*) FROM `tbl_pkl_daftar` WHERE id_siswa = :id_siswa";
+        $checkQuery = "SELECT COUNT(*) as total FROM `tbl_pkl_daftar` WHERE id_siswa = :id_siswa";
         $this->db->query($checkQuery);
         $this->db->bind('id_siswa', $_SESSION['siswa']);
         $result = $this->db->single();
     
         // If id_siswa already exists, don't proceed with the insert
-        if ($result['COUNT(*)'] > 0) {
+        if ($result['total'] > 0) {
             return false; // or you can return an error message
         }
     
-        // If id_siswa doesn't exist, proceed with the insert
-        $insertQuery = "INSERT INTO tbl_pkl_daftar (id_info, id_siswa) VALUES (:id_info, :id_siswa)";
-        $this->db->query($insertQuery);
+        // Get the total number of registrations for the specified id_info
+        $countQuery = "SELECT COUNT(*) as total FROM `tbl_pkl_daftar` WHERE id_info = :id_info";
+        $this->db->query($countQuery);
         $this->db->bind('id_info', $id);
-        $this->db->bind('id_siswa', $_SESSION['siswa']);
+        $result = $this->db->single();
+        $jmlPendaftar = $result['total'];
     
-        return $this->db->execute();
+        // Replace 'jml_pendaftar' with the actual limit from the database
+        $limitQuery = "SELECT jml_pendaftar FROM `tbl_sas_pkl` WHERE id_info = :id_info";
+        $this->db->query($limitQuery);
+        $this->db->bind('id_info', $id);
+        $result = $this->db->single();
+        $limit = $result['jml_pendaftar'];
+    
+        if ($jmlPendaftar < $limit) {
+            // If id_siswa doesn't exist and the limit is not reached, proceed with the insert
+            $insertQuery = "INSERT INTO tbl_pkl_daftar (id_info, id_siswa) VALUES (:id_info, :id_siswa)";
+            $this->db->query($insertQuery);
+            $this->db->bind('id_info', $id);
+            $this->db->bind('id_siswa', $_SESSION['siswa']);
+    
+            return $this->db->execute();
+        } else {
+            return false;
+        }
     }
+    
     
     public function downloadPkl()
     {

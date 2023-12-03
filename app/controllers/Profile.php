@@ -21,7 +21,7 @@ class Profile extends Controller {
             header('Location: ' . BASEURL . '/profile  ');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            Flasher::setFlash('berhasil', 'diubah', 'success');
             header('Location: ' . BASEURL . '/profile');
             exit;
         }

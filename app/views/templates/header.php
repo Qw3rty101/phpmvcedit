@@ -49,7 +49,7 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['siswa'])) {
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home">
                 <div class="sidebar-brand-icon">
                     <i class="bi bi-buildings"></i>
                 </div>

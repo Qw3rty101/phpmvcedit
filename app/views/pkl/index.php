@@ -20,12 +20,10 @@
 
 
 
-<div class="list-group mt-4">
+    <div class="list-group mt-4">
     <?php foreach ($data['pkl'] as $pkl) : ?>
-        <div>
-            <a href="<?php if(isset($_SESSION['siswa'])) {
-                echo BASEURL . "/pkl/daftar/" . $pkl['id_info'];
-                }?>" class="list-group-item list-group-item-action flex-column align-items-start">
+        <?php if ($pkl['jumlahPendaftar'] < $pkl['jml_pendaftar']) : ?>
+            <a href="<?= isset($_SESSION['siswa']) ? BASEURL . "/pkl/daftar/" . $pkl['id_info'] : '#' ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1"><?= $pkl['title_info']; ?></h5>
                     <?php if (isset($_SESSION['email'])) : ?>
@@ -35,15 +33,29 @@
                     <?php endif; ?>
                 </div>
                 <p class="mb-1"><?= $pkl['deks_info']; ?></p>
-                <?php if ($pkl['jumlahPendaftar'] < $pkl['jml_pendaftar']) : ?>
-                    <span class="badge badge-success">Tersedia</span>
-                <?php else: ?>
-                    <span class="badge badge-danger">Tidak Tersedia</span>
-                <?php endif; ?>
+                <span class="badge badge-success">Tersedia</span>
             </a>
-        </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+
+    <?php foreach ($data['pkl'] as $pkl) : ?>
+        <?php if ($pkl['jumlahPendaftar'] >= $pkl['jml_pendaftar']) : ?>
+            <a href="<?= isset($_SESSION['siswa']) ? BASEURL . "/pkl/daftar/" . $pkl['id_info'] : '#' ?>" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><?= $pkl['title_info']; ?></h5>
+                    <?php if (isset($_SESSION['email'])) : ?>
+                        <button type="button" class="close text-danger" aria-label="Close" id="hapusButton_<?= $pkl['id_info']; ?>" onclick="hapusData('<?= $pkl['id_info']; ?>')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    <?php endif; ?>
+                </div>
+                <p class="mb-1"><?= $pkl['deks_info']; ?></p>
+                <span class="badge badge-danger">Tidak Tersedia</span>
+            </a>
+        <?php endif; ?>
     <?php endforeach; ?>
 </div>
+
 
 
 
