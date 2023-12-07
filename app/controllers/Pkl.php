@@ -57,17 +57,27 @@ class Pkl extends Controller {
 
     public function daftar($id)
     {
-        if( $this->model('Pkl_model')->daftar($id) > 0 ) {
-            Flasher::setFlash('berhasil', 'dihapus', 'success');
-            header('Location: ' . BASEURL . '/pkl');
+        // if( $this->model('Pkl_model')->daftar($id) > 0 ) {
+        //     Flasher::setFlash('berhasil', 'dihapus', 'success');
+        //     header('Location: ' . BASEURL . '/pkl');
+        //     exit;
+        // } else {
+        //     Flasher::setFlash('gagal', 'dihapus', 'danger');
+        //     header('Location: ' . BASEURL . '/pkl');
+        //     exit;
+        // }
+
+        // var_dump($id);
+
+        $result = $this->model('Pkl_model')->daftar($id);
+        if ($result === true) {
+            echo "<script>alert('Anda berhasil mendaftar'); window.location.href='" . BASEURL . "/pkl';</script>";
             exit;
         } else {
-            Flasher::setFlash('gagal', 'dihapus', 'danger');
-            header('Location: ' . BASEURL . '/pkl');
+            echo "<script>alert('" . $result . "'); window.location.href='" . BASEURL . "/pkl';</script>";
             exit;
         }
-
-        var_dump($id);
+        
     }
     
     public function tambah()

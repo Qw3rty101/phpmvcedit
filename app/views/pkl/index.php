@@ -23,7 +23,7 @@
     <div class="list-group mt-4">
         <?php foreach ($data['pkl'] as $pkl) : ?>
             <?php if ($pkl['jumlahPendaftar'] < $pkl['jml_pendaftar']) : ?>
-                <a href="<?= isset($_SESSION['siswa']) ? BASEURL . "/pkl/daftar/" . $pkl['id_info'] : '#' ?>" class="list-group-item list-group-item-action flex-column align-items-start">
+                <a href="<?= isset($_SESSION['siswa']) ? BASEURL . "/pkl/daftar/" . $pkl['id_info'] : '#' ?>" class="list-group-item list-group-item-action flex-column align-items-start"  onclick="return confirm('Apakah Anda yakin ingin mendaftar?')">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1"><?= $pkl['title_info']; ?></h5>
                         <?php if (isset($_SESSION['email'])) : ?>

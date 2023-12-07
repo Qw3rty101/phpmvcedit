@@ -107,7 +107,7 @@ class pkl_model {
     
         // If id_siswa already exists, don't proceed with the insert
         if ($result['total'] > 0) {
-            return false; // or you can return an error message
+            return "Anda sudah mendaftar sebelelumnya."; // or you can return an error message
         }
     
         // Get the total number of registrations for the specified id_info
@@ -131,9 +131,10 @@ class pkl_model {
             $this->db->bind('id_info', $id);
             $this->db->bind('id_siswa', $_SESSION['siswa']);
     
-            return $this->db->execute();
+            // return $this->db->execute();
+            return $this->db->execute() ? true : "Anda berhasil mendaftar!";
         } else {
-            return false;
+            return "Limit pendaftar telah tercapai.";
         }
     }
 
