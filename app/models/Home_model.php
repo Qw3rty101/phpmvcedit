@@ -23,7 +23,13 @@ class Home_model {
             ) AS total_siswa,
             (
                 SELECT COUNT(*) FROM tbl_sas_jurusan
-            ) AS total_jurusan
+            ) AS total_jurusan,
+            (
+                SELECT COUNT(*) FROM tbl_sas_pkl
+            ) AS total_pkl,
+            (
+                SELECT COUNT(*) FROM tbl_sas_skills
+            ) AS total_skills
         ";
 
         $this->stmt = $this->dbh->prepare($query);
