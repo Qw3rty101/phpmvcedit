@@ -5,7 +5,7 @@
         <?php
         if (isset($_SESSION['email'])) {
             echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">';
-            echo 'Tambah Pengguna';
+            echo 'Tambah Pengumuman';
             echo '</button>';
         }
         ?>
