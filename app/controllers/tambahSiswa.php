@@ -20,8 +20,9 @@ class tambahSiswa extends Controller {
     public function tambah()
     {
         if( $this->model('Siswa_model')->tambahSiswa($_POST) > 0 ) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
-            header('Location: ' . BASEURL . '/tambahSiswa');
+            // Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            // header('Location: ' . BASEURL . '/tambahSiswa');
+            echo "<script>alert('Siswa berhasil ditambahkan!'); window.location.href='" . BASEURL . "/tambahSiswa';</script>";
             exit;
         } else {
             Flasher::setFlash('gagal', 'ditambahkan', 'danger');

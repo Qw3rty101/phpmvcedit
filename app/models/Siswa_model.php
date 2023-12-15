@@ -27,6 +27,7 @@ class Siswa_model {
         $nisn = htmlspecialchars($_POST['nisn']);
         $address = htmlspecialchars($_POST['address']);
         $nowa = htmlspecialchars($_POST['nowa']);
+        $rombel = htmlspecialchars($_POST['rombel']);
         $jurusanValue = htmlspecialchars($_POST['jurusan']);
     
         // Periksa apakah nilai jurusan ada di tabel tbl_sas_jurusan
@@ -43,7 +44,7 @@ class Siswa_model {
     
             // Selanjutnya, masukkan data ke dalam tbl_sas_siswa
             $queryInsertSiswa = "INSERT INTO tbl_sas_siswa (name_siswa, nisn_siswa, address_siswa, noWA_siswa, id_jurusan, rombel_siswa, jurusan_siswa) 
-                                 VALUES (:name, :nisn, :address, :noWA, :idJurusan, '', :nameJurusan)";
+                                 VALUES (:name, :nisn, :address, :noWA, :idJurusan, :rombel, :nameJurusan)";
             
             $this->stmt = $this->dbh->prepare($queryInsertSiswa);
             $this->stmt->bindParam(':name', $name);
@@ -51,6 +52,7 @@ class Siswa_model {
             $this->stmt->bindParam(':address', $address);
             $this->stmt->bindParam(':noWA', $nowa);
             $this->stmt->bindParam(':idJurusan', $idJurusan);
+            $this->stmt->bindParam(':rombel', $rombel);
             $this->stmt->bindParam(':nameJurusan', $nameJurusan);
     
             $this->stmt->execute();
