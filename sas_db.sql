@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Des 2023 pada 19.35
+-- Waktu pembuatan: 13 Des 2023 pada 10.15
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -38,8 +38,9 @@ CREATE TABLE `tbl_pkl_daftar` (
 --
 
 INSERT INTO `tbl_pkl_daftar` (`id_daftar`, `id_info`, `id_siswa`) VALUES
-(61, 30, 1),
-(64, 30, 3);
+(64, 30, 3),
+(79, 32, 2),
+(86, 30, 1);
 
 -- --------------------------------------------------------
 
@@ -71,7 +72,7 @@ INSERT INTO `tbl_sas_admin` (`id_admin`, `name_admin`, `email_admin`, `password_
 CREATE TABLE `tbl_sas_announcements` (
   `id_ann` int(11) NOT NULL,
   `title_ann` varchar(50) NOT NULL,
-  `content_ann` varchar(50) NOT NULL,
+  `content_ann` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_by` int(11) NOT NULL,
   `id_admin` int(11) NOT NULL
@@ -82,7 +83,7 @@ CREATE TABLE `tbl_sas_announcements` (
 --
 
 INSERT INTO `tbl_sas_announcements` (`id_ann`, `title_ann`, `content_ann`, `created_at`, `created_by`, `id_admin`) VALUES
-(4, 'Wleowleowleo', 'asd', '2023-12-03 15:56:09', 1, 1);
+(5, 'Tugas Hari Senin', 'Seluruh siswa wajib membawa uranium 0.1g dikumpulkan saat upacara', '2023-12-13 09:04:24', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,8 @@ CREATE TABLE `tbl_sas_pkl` (
 
 INSERT INTO `tbl_sas_pkl` (`id_info`, `id_admin`, `title_info`, `deks_info`, `jml_pendaftar`, `created_by`, `created_at`) VALUES
 (30, 1, 'PT. Mencari Cinta Sejati', 'Model', 2, 1, '2023-12-03 17:13:49'),
-(32, 1, 'PT. Apaajalah', 'ya nda tau', 2, 1, '2023-12-03 18:02:43');
+(32, 1, 'PT. Apaajalah', 'ya nda tau', 1, 1, '2023-12-03 18:02:43'),
+(34, 1, 'test', 'test', 1, 1, '2023-12-07 11:20:14');
 
 -- --------------------------------------------------------
 
@@ -183,7 +185,8 @@ CREATE TABLE `tbl_sas_skills` (
 INSERT INTO `tbl_sas_skills` (`id_skill`, `id_admin`, `title_skill`, `deks_skill`, `link_skill`, `created_at`, `created_by`) VALUES
 (6, 1, 'Build With Angga', 'Kelas Online Belajar Design dan Development | BuildWithAngga', 'https://buildwithangga.com/', '2023-12-03 17:59:03', 1),
 (12, 1, 'Dicoding Indonesia', 'Bangun Karirmu Sebagai Developer Profesional', 'https://www.dicoding.com/', '2023-12-03 18:00:52', 1),
-(13, 1, 'StudyClubProgramming(SR)', 'Komunitas Belajar Programming (UBP)', 'https://discord.gg/Qp7rUf7MdG', '2023-12-03 18:01:59', 1);
+(13, 1, 'StudyClubProgramming(SR)', 'Komunitas Belajar Programming (UBP)', 'https://discord.gg/Qp7rUf7MdG', '2023-12-03 18:01:59', 1),
+(14, 1, 'test', 'test', 'test', '2023-12-07 11:15:59', 1);
 
 --
 -- Indexes for dumped tables
@@ -245,7 +248,7 @@ ALTER TABLE `tbl_sas_skills`
 -- AUTO_INCREMENT untuk tabel `tbl_pkl_daftar`
 --
 ALTER TABLE `tbl_pkl_daftar`
-  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_sas_admin`
@@ -257,7 +260,7 @@ ALTER TABLE `tbl_sas_admin`
 -- AUTO_INCREMENT untuk tabel `tbl_sas_announcements`
 --
 ALTER TABLE `tbl_sas_announcements`
-  MODIFY `id_ann` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_ann` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_sas_jurusan`
@@ -269,7 +272,7 @@ ALTER TABLE `tbl_sas_jurusan`
 -- AUTO_INCREMENT untuk tabel `tbl_sas_pkl`
 --
 ALTER TABLE `tbl_sas_pkl`
-  MODIFY `id_info` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_info` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_sas_siswa`
@@ -281,7 +284,7 @@ ALTER TABLE `tbl_sas_siswa`
 -- AUTO_INCREMENT untuk tabel `tbl_sas_skills`
 --
 ALTER TABLE `tbl_sas_skills`
-  MODIFY `id_skill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_skill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
