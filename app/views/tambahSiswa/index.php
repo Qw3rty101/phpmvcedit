@@ -47,6 +47,6 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Tambah</button>
+        <button type="submit" class="btn btn-primary" style="padding: 10px 50px; margin-top: -40px;"><strong>Tambah</strong></button>
     </form>
 </div>
