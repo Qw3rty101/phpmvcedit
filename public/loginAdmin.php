@@ -47,6 +47,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+      body {
+        background-color: #2D54C6;
+      }
+
+      .display-5 {
+        color : #F5F6F9;
+        margin-bottom : 20px;
+        font-weight : bold;
+      }
+      
+      .form-control {
+        border: 2px solid #4E73DF;
+      }
+      
+      label {
+        font-weight : 400;
+        color : #858796;
+      }
+      
+      .btn {
+        font-weight : bold;
+      }
+      
+    </style>
   </head>
   <body>   
 
