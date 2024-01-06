@@ -77,10 +77,10 @@ class pkl_model {
         $this->db->execute();
     
         // Hapus data dari tbl_pkl_daftar
-        $query2 = "DELETE FROM tbl_pkl_daftar WHERE id_info = :id";
-        $this->db->query($query2);
-        $this->db->bind('id', $id);
-        $this->db->execute();
+        // $query2 = "DELETE FROM tbl_pkl_daftar WHERE id_info = :id";
+        // $this->db->query($query2);
+        // $this->db->bind('id', $id);
+        // $this->db->execute();
     
         return $this->db->rowCount();
     }
@@ -108,6 +108,17 @@ class pkl_model {
         // If id_siswa already exists, don't proceed with the insert
         if ($result['total'] > 0) {
             return "Anda sudah mendaftar sebelelumnya."; // or you can return an error message
+            // <script>
+            //     document.addEventListener('DOMContentLoaded', function () {
+            //         Swal.fire({
+            //             title: 'Good job!',
+            //             text: 'You clicked the button!',
+            //             icon: 'error',
+            //             showConfirmButton: false,
+            //             timer: 1000
+            //         });
+            //     });
+            // </script>
         }
     
         // Get the total number of registrations for the specified id_info
